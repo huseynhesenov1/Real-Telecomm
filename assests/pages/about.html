@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Telecom - HAQQIMIZDA</title>
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="../images/real_iconloqo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="height: 12vh; position: fixed" class="navbar">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <img src="../images/real_loqo.png" alt="Logo" />
+        </div>
+        <nav class="menu">
+          <a href="../../index.html">ANA SƏHİFƏ</a>
+          <a href="about.html">HAQQIMIZDA</a>
+          <a href="../../index.html#our-service">XİDMƏTLƏR</a>
+          <a href="payment.html">ÖDƏNİŞ</a>
+          <a href="../../index.html#contact-us">ƏLAQƏ</a>
+          <div class="contact d-lg-none">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+994123100909">+994 12 310 09 09</a>
+          </div>
+        </nav>
+        <div class="contact d-none d-lg-block">
+          <i class="fas fa-phone"></i>
+          <a
+            style="color: black; text-decoration: none"
+            href="tel:+994123100909">+994 12 310 09 09</a>
+          >
+        </div>
+        <div class="hamburger" id="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="close-menu" id="close-menu">&times;</div>
+      </div>
+    </header>
+
+    <div class="container about-section">
+      <div class="row align-items-center">
+        <div class="col-lg-6 about-text">
+          <h2 style="margin-top: 50px">Haqqımızda</h2>
+          <p>
+            “Real Telecom” MMC informasiya və kommunikasiya texnologiyaları
+            sahəsində fəaliyyət göstərən yenilikçi və dinamik şirkətlərdən
+            biridir. Müştərilərimizə müasir fiber-optik internet xidmətləri
+            təqdim edərək, yüksək sürət və etibarlı bağlantı təmin edirik.
+            Fiber-optik kabel birbaşa istifadəçinin ünvanına çəkilir və bu da
+            daha stabil və fasiləsiz internet təcrübəsi yaradır. Bu qabaqcıl
+            texnologiya sayəsində müxtəlif rəqəmsal xidmətlər eyni xətt
+            üzərindən problemsiz şəkildə istifadə oluna bilir. Peşəkar texniki
+            komandamız mümkün nasazlıqları qısa zamanda aradan qaldıraraq
+            xidmətin davamlılığını qoruyur. Qısa müddətdə çoxsaylı müştərilərin
+            etimadını qazanan “Real Telecom” MMC olaraq, sizə sürətli, rahat və
+            keyfiyyətli internet təcrübəsi təqdim etməyə davam edirik. <br />
+
+            Siz də xidmətimizə qoşulun və fərqi özünüz hiss edin!
+          </p>
+        </div>
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+          class="col-lg-6 about-image"
+        >
+          <img
+            style="margin-top: 70px"
+            src="../images/about_img_real.jpg"
+            alt="Ofis şəkli"
+            class="img-fluid shadow"
+          />
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center mx-5 mb-5">Əhatə dairəmiz</h1>
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <footer class="main-footer">
+      <div class="custom-footer mt-5">
+        <div class="container text-center">
+          <div class="footer d-flex align-items-center justify-content-center">
+            <span class="line"></span>
+            <span class="diamond"></span>
+            <span class="footer-text mx-3">© 2025 Real Telecom MMC</span>
+            <span class="diamond"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // 1️⃣ Xəritəni yarat
+      var map = L.map("map", {
+        scrollWheelZoom: false, // scroll ilə zoom default söndürülür
+      }).setView([40.5, 49.75], 11);
+
+      // 2️⃣ OpenStreetMap layer əlavə et
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // 3️⃣ CTRL basılmadan zoom olmasın
+      map.getContainer().addEventListener("wheel", function (e) {
+        if (e.ctrlKey) {
+          map.scrollWheelZoom.enable(); // CTRL varsa zoom açılır
+        } else {
+          map.scrollWheelZoom.disable(); // yoxdursa söndürülür
+        }
+      });
+
+      // 4️⃣ Marker siyahısı
+      var locations = [
+        [40.50604, 49.84796, "Mehdiabad"],
+        [40.50451, 49.91158, "Mehdiabad2"],
+        [40.5193, 49.97242, "Mehdiabad3"],
+        [40.407392, 49.872366, "Mehemmedi"],
+        [40.407718, 49.950766, "Mehemmedi"],
+        [40.496832, 49.868234, "Digah"],
+        [40.506806, 49.874279, "Digah"],
+        [40.53462, 49.84118, "Fatmayı"],
+        [40.532092, 49.848864, "Fatmayı"],
+        [40.496125587119245, 49.84993176519749, "Mescid Mehdiabad"],
+      ];
+
+      // 5️⃣ Markerləri xəritəyə əlavə et
+      locations.forEach(function (loc) {
+        L.marker([loc[0], loc[1]])
+          .addTo(map)
+          .bindPopup("<b>" + loc[2] + "</b>");
+      });
+    </script>
+    <!-- <script>
+      // 1️⃣ Xəritəni yarat (Azərbaycan mərkəz)
+      var map = L.map("map").setView([40.5, 49.75], 11);
+
+      // 2️⃣ Xəritə layer (OpenStreetMap - pulsuz)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
+
+      // 3️⃣ Marker siyahısı
+      var locations = [
+        [40.50604, 49.84796, "Mehdiabad"],
+        [40.50451, 49.91158, "Mehdiabad2"],
+        [40.5193, 49.97242, "Mehdiabad3"],
+        [40.407392, 49.872366, "mehemmedi"],
+        [40.407718, 49.950766, "mehemmedi"],
+        [0.496832, 49.868234, "Digah"],
+        [40.506806, 49.874279, "Digah"],
+        [40.53462, 49.84118, "Fatmayı"],
+        [40.532092, 49.848864, "Fatmayı"],
+        [40.496125587119245, 49.84993176519749, "Mescod Mehdiaad"],
+      ];
+
+      // 4️⃣ Marker əlavə et
+      locations.forEach(function (loc) {
+        L.marker([loc[0], loc[1]])
+          .addTo(map)
+          .bindPopup("<b>" + loc[2] + "</b>");
+      });
+    </script> -->
+    <script src="../bootstrap5/js/bootstrap.bundle.js"></script>
+    <script>
+      const hamburger = document.getElementById("hamburger-menu");
+      const menu = document.querySelector(".menu");
+      const closeMenu = document.getElementById("close-menu");
+      const navbar = document.querySelector(".navbar");
+
+      const showHamburger = () => {
+        hamburger.style.display = "flex";
+        closeMenu.style.display = "none";
+      };
+
+      const showCloseMenu = () => {
+        hamburger.style.display = "none";
+        closeMenu.style.display = "block";
+      };
+
+      hamburger.addEventListener("click", function () {
+        menu.classList.add("active");
+        showCloseMenu();
+      });
+
+      closeMenu.addEventListener("click", function () {
+        menu.classList.remove("active");
+        showHamburger();
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 991) {
+          menu.classList.remove("active");
+          hamburger.style.display = "none";
+          closeMenu.style.display = "none";
+        } else {
+          showHamburger();
+        }
+      });
+
+      window.addEventListener("load", function () {
+        if (window.innerWidth <= 991) {
+          showHamburger();
+        }
+      });
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 10) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </body>
+</html>

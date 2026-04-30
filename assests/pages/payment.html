@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RR Telecom - ÖDƏNİŞ</title>
+  <link rel="stylesheet" href="../css/payment.css " />
+  
+  <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css" />
+ <link rel="shortcut icon" href="../images/real_iconloqo.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+  <header style="height: 12vh; position: fixed;" class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <img src="../images/real_loqo.png" alt="Logo">
+      </div>
+      <nav class="menu">
+        <a href="../../index.html">ANA SƏHİFƏ</a>
+        <a href="about.html">HAQQIMIZDA</a>
+        <a href="../../index.html#our-service">XİDMƏTLƏR</a>
+        <a href="payment.html">ÖDƏNİŞ</a>
+        <a href="../../index.html#contact-us">ƏLAQƏ</a>
+        <div class="contact d-lg-none">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+994123100909">+994 12 310 09 09</a>
+        </div>
+      </nav>
+      <div class="contact d-none d-lg-block">
+        <i class="fas fa-phone"></i>
+        <a style="color: black; text-decoration: none;" href="tel:+994123100909">+994 12 310 09 09</a>
+      </div>
+      <div class="hamburger" id="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="close-menu" id="close-menu">&times;</div>
+    </div>
+  </header>
+
+
+  <main class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-inner">
+            <h2 style="color: black;">Ödəniş</h2>
+            <p style="color: black;">
+              Aylıq ödənişləri onlayn və ya ödəniş terminalları üzərindən yerinə yetirə bilərsiniz.
+            </p>
+
+            <div class="tabs" role="tablist" aria-label="Ödəniş seçimləri">
+              <button class="tab-btn active" id="onlineBtn" role="tab" aria-selected="true" style="color: black;">
+                Onlayn ödəniş
+              </button>
+              <button  class="tab-btn" id="terminalBtn" role="tab" aria-selected="false" style="color: black;">
+                Ödəniş terminalları
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid" id="cardWrapper" aria-live="polite"></div>
+      </div>
+    </section>
+
+
+
+
+
+      <!-- <div class="container text-center my-5">
+        <h2 class="fw-bold">Ödəniş</h2>
+        <p class="mb-4">Aylıq ödənişləri onlayn və ya ödəniş terminalları üzərindən yerinə yetirə bilərsiniz</p>
+    
+     
+        <div class="mb-4">
+          <button class="tab-btn active" id="onlineBtn">Onlayn ödəniş</button>
+          <button class="tab-btn" id="terminalBtn">Ödəniş terminalları</button>
+        </div>
+    
+        <div class="row g-4" id="cardWrapper">
+        
+        </div>
+      </div> -->
+      <footer class="main-footer">
+    
+        <div class="custom-footer mt-5">
+            <div class="container text-center">
+              <div class="footer d-flex align-items-center justify-content-center">
+                <span class="line"></span>
+                <span class="diamond"></span>
+                <span class="footer-text mx-3">© 2025 RR Telecom MMC</span>
+                <span class="diamond"></span>
+                <span class="line"></span>
+              </div>
+            </div>
+          </div>
+      </footer>
+
+
+
+
+      <script>
+        const cardWrapper = document.getElementById("cardWrapper");
+        const onlineBtn = document.getElementById("onlineBtn");
+        const terminalBtn = document.getElementById("terminalBtn");
+      
+        // 🔹 Öz şəkil linklərini BURADA yazırsan
+        const onlineCards = [
+          { name: "Fpay", tag: "Rəsmi ödəniş", image: "../images/fpay.svg", link: "https://fpay.az/guest/payments/new-payment/category/3/merchant/5021" },
+          { name: "Hesab.az", tag: "Sürətli", image: "../images/hesabaz.png", link: "https://hesab.az/unregistered/#/direct-pay/internet/realtelecom/parameters" },
+          { name: "EPUL", tag: "Populyar", image: "../images/epul.png", link: "https://example.com/epul" },
+          { name: "Mpay", tag: "Mobil", image: "../images/mpay.svg", link: "https://mpay.svg" },
+          { name: "Milliön", tag: "Geniş şəbəkə", image: "../images/million.jpeg", link: "https://www.million.az/services/internet/RealTelecomFizzaPay" },
+          { name: "Birbank", tag: "Bank tətbiqi", image: "../images/1bank.svg", link: "https://example.com/birbank" }
+        ];
+      
+        const terminalCards = [
+          { name: "Emanat", tag: "Terminal", image: "../images/emenat.jpeg", link: "https://example.com/emanat" },
+          { name: "Milliön", tag: "Terminal", image: "../images/million.jpeg", link: "https://example.com/million-terminal" },
+          { name: "Kassam", tag: "Terminal", image: "../images/kassam.png", link: "https://example.com/kassam" },
+          { name: "Expresspay", tag: "Terminal", image: "../images/expresspay.svg", link: "https://example.com/expresspay" }
+        ];
+      
+        function badgeIcon(text) {
+          const t = (text || "").toLowerCase();
+          if (t.includes("terminal")) return "fa-solid fa-store";
+          if (t.includes("mobil")) return "fa-solid fa-mobile-screen";
+          if (t.includes("bank")) return "fa-solid fa-building-columns";
+          if (t.includes("sürətli")) return "fa-solid fa-bolt";
+          return "fa-solid fa-credit-card";
+        }
+      
+        function renderCards(cards) {
+          cardWrapper.innerHTML = "";
+      
+          cards.forEach((card) => {
+            const col = document.createElement("div");
+            col.className = "col";
+      
+            const icon = badgeIcon(card.tag);
+      
+            col.innerHTML = `
+              <a class="payment-link" href="${card.link}" target="_blank" rel="noopener noreferrer">
+                <article class="payment-card">
+                  <div class="card-inner">
+                    <div class="thumb">
+                      <img src="${card.image}" alt="${card.name}" loading="lazy" />
+                    </div>
+                    <div class="card-meta">
+                      <div class="card-title">
+                        <strong style="color: black;">${card.name}</strong>
+                        <span style="color: black;">${card.tag}</span>
+                      </div>
+                      <div class="badge"><i class="${icon}"></i> Keçid</div>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            `;
+      
+            cardWrapper.appendChild(col);
+          });
+        }
+      
+        function setActiveTab(active) {
+          const isOnline = active === "online";
+          onlineBtn.classList.toggle("active", isOnline);
+          terminalBtn.classList.toggle("active", !isOnline);
+        }
+      
+        // default
+        renderCards(onlineCards);
+      
+        onlineBtn.addEventListener("click", () => {
+          setActiveTab("online");
+          renderCards(onlineCards);
+        });
+      
+        terminalBtn.addEventListener("click", () => {
+          setActiveTab("terminal");
+          renderCards(terminalCards);
+        });
+      </script>
+
+
+
+      <!-- <script>
+        const cardWrapper = document.getElementById("cardWrapper");
+        const onlineBtn = document.getElementById("onlineBtn");
+        const terminalBtn = document.getElementById("terminalBtn");
+  
+        // Test üçün "random" şəkillər: picsum + seed
+        // Test üçün "random" linklər: hər karta ayrı yönləndirmə
+        const onlineCards = [
+          { name: "Fpay", tag: "Rəsmi ödəniş", seed: "fpay", link: "../images/fpay.svg" },
+          { name: "Hesab.az", tag: "Sürətli", seed: "hesabaz", link: "https://example.com/hesabaz" },
+          { name: "EPUL", tag: "Populyar", seed: "epul", link: "https://example.com/epul" },
+          { name: "Mpay", tag: "Mobil", seed: "mpay", link: "https://example.com/mpay" },
+          { name: "Milliön", tag: "Geniş şəbəkə", seed: "million", link: "https://example.com/million" },
+          { name: "Birbank", tag: "Bank tətbiqi", seed: "birbank", link: "https://example.com/birbank" }
+        ];
+  
+        const terminalCards = [
+          { name: "Emanat", tag: "Terminal", seed: "emanat", link: "https://example.com/emanat" },
+          { name: "Milliön", tag: "Terminal", seed: "million-t", link: "https://example.com/million-terminal" },
+          { name: "Kassam", tag: "Terminal", seed: "kassam", link: "https://example.com/kassam" },
+          { name: "Expresspay", tag: "Terminal", seed: "expresspay", link: "https://example.com/expresspay" }
+        ];
+  
+        function badgeIcon(text) {
+          const t = (text || "").toLowerCase();
+          if (t.includes("terminal")) return "fa-solid fa-store";
+          if (t.includes("mobil")) return "fa-solid fa-mobile-screen";
+          if (t.includes("bank")) return "fa-solid fa-building-columns";
+          if (t.includes("sürətli")) return "fa-solid fa-bolt";
+          return "fa-solid fa-credit-card";
+        }
+  
+        function imgUrl(seed) {
+          // 640x400: sabit ölçü, seed: eyni kartda eyni şəkil
+          return `https://picsum.photos/seed/${encodeURIComponent(seed)}/640/400`;
+        }
+  
+        function renderCards(cards) {
+          cardWrapper.innerHTML = "";
+  
+          cards.forEach((card) => {
+            const col = document.createElement("div");
+            col.className = "col";
+  
+            const icon = badgeIcon(card.tag);
+  
+            col.innerHTML = `
+              <a class="payment-link" href="${card.link}" target="_blank" rel="noopener noreferrer" aria-label="${card.name} aç">
+                <article class="payment-card">
+                  <div class="card-inner">
+                    <div class="thumb">
+                      <img src="${imgUrl(card.seed)}" alt="${card.name}" loading="lazy" />
+                    </div>
+                    <div class="card-meta">
+                      <div class="card-title">
+                        <strong style="color: black;">${card.name}</strong>
+                        <span style="color: black;">${card.tag}</span>
+                      </div>
+                      <div class="badge"><i class="${icon}"></i> Keçid</div>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            `;
+  
+            cardWrapper.appendChild(col);
+          });
+        }
+  
+        function setActiveTab(active) {
+          const isOnline = active === "online";
+          onlineBtn.classList.toggle("active", isOnline);
+          terminalBtn.classList.toggle("active", !isOnline);
+          onlineBtn.setAttribute("aria-selected", String(isOnline));
+          terminalBtn.setAttribute("aria-selected", String(!isOnline));
+        }
+  
+        // İlk olaraq onlayn kartlar göstərilsin
+        renderCards(onlineCards);
+  
+        onlineBtn.addEventListener("click", () => {
+          setActiveTab("online");
+          renderCards(onlineCards);
+        });
+  
+        terminalBtn.addEventListener("click", () => {
+          setActiveTab("terminal");
+          renderCards(terminalCards);
+        });
+      </script> -->
+
+
+
+     
+
+<script>
+  const hamburger = document.getElementById("hamburger-menu");
+  const menu = document.querySelector(".menu");
+  const closeMenu = document.getElementById("close-menu");
+  const navbar = document.querySelector(".navbar");
+
+  const showHamburger = () => {
+    hamburger.style.display = "flex";
+    closeMenu.style.display = "none";
+  };
+
+  const showCloseMenu = () => {
+    hamburger.style.display = "none";
+    closeMenu.style.display = "block";
+  };
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.add("active");
+    showCloseMenu();
+  });
+
+  closeMenu.addEventListener("click", function () {
+    menu.classList.remove("active");
+    showHamburger();
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 991) {
+      menu.classList.remove("active");
+      hamburger.style.display = "none";
+      closeMenu.style.display = "none";
+    } else {
+      showHamburger();
+    }
+  });
+
+  window.addEventListener("load", function () {
+    if (window.innerWidth <= 991) {
+      showHamburger();
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 10) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+
+</body>
+</html>
