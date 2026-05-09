@@ -248,18 +248,40 @@
         </p>
       </section>
 
+     
       <section class="contact-wrap">
         <div class="contact-panel">
           <h2 class="contact-title">
             Bizə mesaj yazın <span class="contact-line"></span>
           </h2>
-          <form class="contact-form">
-            <input class="field" type="text" placeholder="Ad" />
-            <input class="field" type="tel" placeholder="Telefon nömrəsi" />
-            <textarea class="field" placeholder="Mətn"></textarea>
-            <button class="send-btn" type="button">Sorğu göndər</button>
+      
+          <form class="contact-form" id="contact-form">
+            <input 
+              class="field" 
+              type="text" 
+              name="name"
+              placeholder="Ad" 
+            />
+      
+            <input 
+              class="field" 
+              type="tel" 
+              name="phone"
+              placeholder="Telefon nömrəsi" 
+            />
+      
+            <textarea 
+              class="field" 
+              name="message"
+              placeholder="Mətn">
+            </textarea>
+      
+            <button class="send-btn" type="submit">
+              Sorğu göndər
+            </button>
           </form>
         </div>
+      
         <div class="contact-media" aria-hidden="true"></div>
       </section>
 
@@ -366,7 +388,22 @@
         </div>
       </div>
     </footer>
-    <!-- <script src="assests/bootstrap5/js/bootstrap.bundle.js"></script> -->
+    
+    <script src="assests/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+     
+      
+      </script>
+
+
+   
+
+
+
+
     <script>
       const hamburger = document.getElementById("hamburger-menu");
       const closeMenu = document.getElementById("close-menu");

@@ -1,38 +1,44 @@
-(function() {
-    emailjs.init({
-      publicKey: "YM2n37fNT2wuBPd5S", // emailjs.com-dan
-    });
-  })();
+document.addEventListener("DOMContentLoaded", () => {
+      
+  emailjs.init("MtC8DB9GNrCLRndjE");
 
-  window.onload = function () {
-    const form = document.getElementById("contact-form");
-    const formInputs = document.querySelectorAll("#contact-form input, #contact-form textarea");
+  const form = document.getElementById("contact-form");
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
+  form.addEventListener("submit", async (e) => {
 
-      // Form daxilindəki input-ların boş olub-olmadığını yoxlayırıq
-      let empty = false;
-      formInputs.forEach(input => {
-        if (!input.value.trim()) {
-          empty = true;
-        }
-      });
+      e.preventDefault();
 
-      if (empty) {
-        alert("Zəhmət olmasa bütün xanaları doldurun.");
-        return;
+      try {
+
+          await emailjs.sendForm(
+              "service_rwexaka",
+              "template_2fm5gpm",
+              form
+          );
+
+          Swal.fire({
+              icon: "success",
+              title: "Uğurlu!",
+              text: "Mesajınız göndərildi.",
+              confirmButtonText: "Bağla"
+          });
+
+          form.reset();
+
+      } 
+      catch (error) {
+
+          console.log(error);
+
+          Swal.fire({
+              icon: "error",
+              title: "Xəta!",
+              text: "Mesaj göndərilmədi.",
+              confirmButtonText: "Bağla"
+          });
+
       }
 
-      // EmailJS vasitəsilə göndər
-      emailjs.sendForm("service_6rbyrzt", "template_f8nkvds", this)
-        .then(() => {
-          alert("Mesaj göndərildi!");
-          form.reset(); // Formu təmizlə
-        }, (error) => {
-          console.error("FAILED...", error);
-          console.error("Xəta:", error);
-          alert("Göndərmə zamanı xəta baş verdi.");
-        });
-    });
-  };
+  });
+
+});
