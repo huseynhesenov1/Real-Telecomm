@@ -68,24 +68,7 @@
       </div>
     </section>
 
-
-
-
-
-      <!-- <div class="container text-center my-5">
-        <h2 class="fw-bold">Ödəniş</h2>
-        <p class="mb-4">Aylıq ödənişləri onlayn və ya ödəniş terminalları üzərindən yerinə yetirə bilərsiniz</p>
-    
-     
-        <div class="mb-4">
-          <button class="tab-btn active" id="onlineBtn">Onlayn ödəniş</button>
-          <button class="tab-btn" id="terminalBtn">Ödəniş terminalları</button>
-        </div>
-    
-        <div class="row g-4" id="cardWrapper">
-        
-        </div>
-      </div> -->
+      
       <footer class="main-footer">
     
         <div class="custom-footer mt-5">
@@ -93,7 +76,7 @@
               <div class="footer d-flex align-items-center justify-content-center">
                 <span class="line"></span>
                 <span class="diamond"></span>
-                <span class="footer-text mx-3">© 2025 RR Telecom MMC</span>
+                <span class="footer-text mx-3">© 2025 Real Telecom MMC</span>
                 <span class="diamond"></span>
                 <span class="line"></span>
               </div>
@@ -103,27 +86,25 @@
 
 
 
-
       <script>
         const cardWrapper = document.getElementById("cardWrapper");
         const onlineBtn = document.getElementById("onlineBtn");
         const terminalBtn = document.getElementById("terminalBtn");
       
-        // 🔹 Öz şəkil linklərini BURADA yazırsan
         const onlineCards = [
-          { name: "Fpay", tag: "Rəsmi ödəniş", image: "../images/fpay.svg", link: "https://fpay.az/guest/payments/new-payment/category/3/merchant/5021" },
+          { name: "Fpay", tag: "Veb-sayt", image: "../images/fpay.svg", link: "https://fpay.az/guest/payments/new-payment/category/3/merchant/5021" },
           { name: "Hesab.az", tag: "Sürətli", image: "../images/hesabaz.png", link: "https://hesab.az/unregistered/#/direct-pay/internet/realtelecom/parameters" },
-          { name: "EPUL", tag: "Populyar", image: "../images/epul.png", link: "https://example.com/epul" },
-          { name: "Mpay", tag: "Mobil", image: "../images/mpay.svg", link: "https://mpay.svg" },
-          { name: "Milliön", tag: "Geniş şəbəkə", image: "../images/million.jpeg", link: "https://www.million.az/services/internet/RealTelecomFizzaPay" },
-          { name: "Birbank", tag: "Bank tətbiqi", image: "../images/1bank.svg", link: "https://example.com/birbank" }
+          { name: "EPUL", tag: "Veb-sayt", image: "../images/epul.png", link: "#" },
+          { name: "Mpay", tag: "Mobil", image: "../images/mpay.svg", link: "#" },
+          { name: "Milliön", tag: "Veb-sayt", image: "../images/million.jpeg", link: "https://www.million.az/services/internet/RealTelecomFizzaPay" },
+          { name: "Birbank", tag: "Bank tətbiqi", image: "../images/1bank.svg", link: "#" }
         ];
       
         const terminalCards = [
-          { name: "Emanat", tag: "Terminal", image: "../images/emenat.jpeg", link: "https://example.com/emanat" },
-          { name: "Milliön", tag: "Terminal", image: "../images/million.jpeg", link: "https://example.com/million-terminal" },
-          { name: "Kassam", tag: "Terminal", image: "../images/kassam.png", link: "https://example.com/kassam" },
-          { name: "Expresspay", tag: "Terminal", image: "../images/expresspay.svg", link: "https://example.com/expresspay" }
+          { name: "Emanat", tag: "Terminal", image: "../images/emenat.jpeg", link: "#" },
+          { name: "Milliön", tag: "Terminal", image: "../images/million.jpeg", link: "#" },
+          { name: "Kassam", tag: "Terminal", image: "../images/kassam.png", link: "#" },
+          { name: "Expresspay", tag: "Terminal", image: "../images/expresspay.svg", link: "#" }
         ];
       
         function badgeIcon(text) {
@@ -173,7 +154,6 @@
           terminalBtn.classList.toggle("active", !isOnline);
         }
       
-        // default
         renderCards(onlineCards);
       
         onlineBtn.addEventListener("click", () => {
@@ -188,97 +168,6 @@
       </script>
 
 
-
-      <!-- <script>
-        const cardWrapper = document.getElementById("cardWrapper");
-        const onlineBtn = document.getElementById("onlineBtn");
-        const terminalBtn = document.getElementById("terminalBtn");
-  
-        // Test üçün "random" şəkillər: picsum + seed
-        // Test üçün "random" linklər: hər karta ayrı yönləndirmə
-        const onlineCards = [
-          { name: "Fpay", tag: "Rəsmi ödəniş", seed: "fpay", link: "../images/fpay.svg" },
-          { name: "Hesab.az", tag: "Sürətli", seed: "hesabaz", link: "https://example.com/hesabaz" },
-          { name: "EPUL", tag: "Populyar", seed: "epul", link: "https://example.com/epul" },
-          { name: "Mpay", tag: "Mobil", seed: "mpay", link: "https://example.com/mpay" },
-          { name: "Milliön", tag: "Geniş şəbəkə", seed: "million", link: "https://example.com/million" },
-          { name: "Birbank", tag: "Bank tətbiqi", seed: "birbank", link: "https://example.com/birbank" }
-        ];
-  
-        const terminalCards = [
-          { name: "Emanat", tag: "Terminal", seed: "emanat", link: "https://example.com/emanat" },
-          { name: "Milliön", tag: "Terminal", seed: "million-t", link: "https://example.com/million-terminal" },
-          { name: "Kassam", tag: "Terminal", seed: "kassam", link: "https://example.com/kassam" },
-          { name: "Expresspay", tag: "Terminal", seed: "expresspay", link: "https://example.com/expresspay" }
-        ];
-  
-        function badgeIcon(text) {
-          const t = (text || "").toLowerCase();
-          if (t.includes("terminal")) return "fa-solid fa-store";
-          if (t.includes("mobil")) return "fa-solid fa-mobile-screen";
-          if (t.includes("bank")) return "fa-solid fa-building-columns";
-          if (t.includes("sürətli")) return "fa-solid fa-bolt";
-          return "fa-solid fa-credit-card";
-        }
-  
-        function imgUrl(seed) {
-          // 640x400: sabit ölçü, seed: eyni kartda eyni şəkil
-          return `https://picsum.photos/seed/${encodeURIComponent(seed)}/640/400`;
-        }
-  
-        function renderCards(cards) {
-          cardWrapper.innerHTML = "";
-  
-          cards.forEach((card) => {
-            const col = document.createElement("div");
-            col.className = "col";
-  
-            const icon = badgeIcon(card.tag);
-  
-            col.innerHTML = `
-              <a class="payment-link" href="${card.link}" target="_blank" rel="noopener noreferrer" aria-label="${card.name} aç">
-                <article class="payment-card">
-                  <div class="card-inner">
-                    <div class="thumb">
-                      <img src="${imgUrl(card.seed)}" alt="${card.name}" loading="lazy" />
-                    </div>
-                    <div class="card-meta">
-                      <div class="card-title">
-                        <strong style="color: black;">${card.name}</strong>
-                        <span style="color: black;">${card.tag}</span>
-                      </div>
-                      <div class="badge"><i class="${icon}"></i> Keçid</div>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            `;
-  
-            cardWrapper.appendChild(col);
-          });
-        }
-  
-        function setActiveTab(active) {
-          const isOnline = active === "online";
-          onlineBtn.classList.toggle("active", isOnline);
-          terminalBtn.classList.toggle("active", !isOnline);
-          onlineBtn.setAttribute("aria-selected", String(isOnline));
-          terminalBtn.setAttribute("aria-selected", String(!isOnline));
-        }
-  
-        // İlk olaraq onlayn kartlar göstərilsin
-        renderCards(onlineCards);
-  
-        onlineBtn.addEventListener("click", () => {
-          setActiveTab("online");
-          renderCards(onlineCards);
-        });
-  
-        terminalBtn.addEventListener("click", () => {
-          setActiveTab("terminal");
-          renderCards(terminalCards);
-        });
-      </script> -->
 
 
 

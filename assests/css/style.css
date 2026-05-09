@@ -640,81 +640,7 @@ border: none;
   display: none;
 }
 }
-  /* .site-footer {
-    margin-top: 34px;
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    border-radius: 28px 28px 0 0;
-    overflow: hidden;
-    border: 1px solid rgba(15, 23, 42, 0.3);
-    box-shadow: 0 -8px 40px rgba(2, 6, 23, 0.3);
-    background: #020617;
-  }
-
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    min-height: 360px;
-    background:
-      linear-gradient(130deg, #020617 0 40%, #0f75c2 40% 88%, #020617 88%),
-      linear-gradient(160deg, #031025, #063a64);
-  }
-
-  .footer-contact-panel {
-    padding: 44px 38px;
-    color: #e2e8f0;
-    display: grid;
-    align-content: center;
-    gap: 12px;
-  }
-
-  .footer-contact-panel h3 {
-    margin: 0;
-    font-size: clamp(1.6rem, 3vw, 2.1rem);
-    color: #f8fafc;
-    letter-spacing: -0.02em;
-  }
-
-  .footer-contact-panel p,
-  .footer-contact-panel a {
-    margin: 0;
-    color: #cbd5e1;
-    text-decoration: none;
-    line-height: 1.65;
-    font-size: 0.98rem;
-  }
-
-  .footer-contact-panel a:hover {
-    color: #7dd3fc;
-  }
-
-  .footer-map-panel {
-    display: grid;
-    place-items: center;
-    padding: 24px 26px;
-  }
-
-  .footer-map-frame {
-    width: min(100%, 470px);
-    height: 300px;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.3);
-    background: #fff;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(148, 163, 184, 0.22);
-    background: #f8fafc;
-    padding: 14px 22px;
-    text-align: center;
-    color: #0f172a;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  } */
-
+  
   .faq-wrap {
     margin-top: 34px;
     border-radius: 26px;
@@ -1169,3 +1095,10 @@ border: none;
   .hamburger.hide {
     display: none;
   }
+
+
+
+
+  #join {
+    scroll-margin-top: 150px;
+}
