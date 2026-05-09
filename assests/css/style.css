@@ -501,7 +501,7 @@
   }
 
   textarea.field {
-    min-height: 132px;
+    min-height: 250px;
     resize: vertical;
     line-height: 1.5;
   }
