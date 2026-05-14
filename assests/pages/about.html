@@ -31,7 +31,9 @@
     <header style="height: 12vh; position: fixed" class="navbar">
       <div class="container d-flex align-items-center justify-content-between">
         <div class="logo">
+          <a href="../../index.html">
           <img src="../images/real_loqo.png" alt="Logo" />
+        </a>
         </div>
         <nav class="menu">
           <a href="../../index.html">ANA SƏHİFƏ</a>
@@ -94,11 +96,10 @@
         </div>
       </div>
     </div>
-    <h1 class="text-center mx-5 mb-5">Əhatə dairəmiz</h1>
-    <div id="map"></div>
+   
 
     <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
 
     <footer class="main-footer">
       <div class="custom-footer mt-5">
@@ -113,77 +114,7 @@
         </div>
       </div>
     </footer>
-    <script>
-      // 1️⃣ Xəritəni yarat
-      var map = L.map("map", {
-        scrollWheelZoom: false, // scroll ilə zoom default söndürülür
-      }).setView([40.5, 49.75], 11);
-
-      // 2️⃣ OpenStreetMap layer əlavə et
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
-
-      // 3️⃣ CTRL basılmadan zoom olmasın
-      map.getContainer().addEventListener("wheel", function (e) {
-        if (e.ctrlKey) {
-          map.scrollWheelZoom.enable(); // CTRL varsa zoom açılır
-        } else {
-          map.scrollWheelZoom.disable(); // yoxdursa söndürülür
-        }
-      });
-
-      // 4️⃣ Marker siyahısı
-      var locations = [
-        [40.50604, 49.84796, "Mehdiabad"],
-        [40.50451, 49.91158, "Mehdiabad2"],
-        [40.5193, 49.97242, "Mehdiabad3"],
-        [40.407392, 49.872366, "Mehemmedi"],
-        [40.407718, 49.950766, "Mehemmedi"],
-        [40.496832, 49.868234, "Digah"],
-        [40.506806, 49.874279, "Digah"],
-        [40.53462, 49.84118, "Fatmayı"],
-        [40.532092, 49.848864, "Fatmayı"],
-        [40.496125587119245, 49.84993176519749, "Mescid Mehdiabad"],
-      ];
-
-      // 5️⃣ Markerləri xəritəyə əlavə et
-      locations.forEach(function (loc) {
-        L.marker([loc[0], loc[1]])
-          .addTo(map)
-          .bindPopup("<b>" + loc[2] + "</b>");
-      });
-    </script>
-    <!-- <script>
-      // 1️⃣ Xəritəni yarat (Azərbaycan mərkəz)
-      var map = L.map("map").setView([40.5, 49.75], 11);
-
-      // 2️⃣ Xəritə layer (OpenStreetMap - pulsuz)
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap",
-      }).addTo(map);
-
-      // 3️⃣ Marker siyahısı
-      var locations = [
-        [40.50604, 49.84796, "Mehdiabad"],
-        [40.50451, 49.91158, "Mehdiabad2"],
-        [40.5193, 49.97242, "Mehdiabad3"],
-        [40.407392, 49.872366, "mehemmedi"],
-        [40.407718, 49.950766, "mehemmedi"],
-        [0.496832, 49.868234, "Digah"],
-        [40.506806, 49.874279, "Digah"],
-        [40.53462, 49.84118, "Fatmayı"],
-        [40.532092, 49.848864, "Fatmayı"],
-        [40.496125587119245, 49.84993176519749, "Mescod Mehdiaad"],
-      ];
-
-      // 4️⃣ Marker əlavə et
-      locations.forEach(function (loc) {
-        L.marker([loc[0], loc[1]])
-          .addTo(map)
-          .bindPopup("<b>" + loc[2] + "</b>");
-      });
-    </script> -->
+  
     <script src="../bootstrap5/js/bootstrap.bundle.js"></script>
     <script>
       const hamburger = document.getElementById("hamburger-menu");
